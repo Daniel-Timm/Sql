@@ -1,0 +1,19 @@
+
+CREATE DATABASE IF NOT EXISTS concessionaria;
+use concessionaria;
+CREATE TABLE if not exists venda (
+    IDVenda INT PRIMARY KEY NOT NULL ,
+    valor DECIMAL(8, 2),
+    data1 DATE 
+);
+insert into venda (IDVenda,valor,data1)
+ values (2,250.50,'2005-04-12');
+ select * from venda; 
+ 
+ create table if not exists veiculo (IDVeiculo int primary key not null, 
+ nome char (16),
+ cor char(15),
+ placa char (8));
+ insert into veiculo (IDVeiculo,nome,cor,placa) 
+ values (1,'Opala','Vermelho', '12NB21');
+ select * from veiculo;
