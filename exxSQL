@@ -1,19 +1,75 @@
-
 CREATE DATABASE IF NOT EXISTS concessionaria;
-use concessionaria;
-CREATE TABLE if not exists venda (
-    IDVenda INT PRIMARY KEY NOT NULL ,
+USE concessionaria;
+
+DROP TABLE IF EXISTS venda;
+CREATE TABLE IF NOT EXISTS venda (
+    IDVenda INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     valor DECIMAL(8, 2),
-    data1 DATE 
+    data1 DATE
 );
-insert into venda (IDVenda,valor,data1)
- values (2,250.50,'2005-04-12');
- select * from venda; 
- 
- create table if not exists veiculo (IDVeiculo int primary key not null, 
- nome char (16),
- cor char(15),
- placa char (8));
- insert into veiculo (IDVeiculo,nome,cor,placa) 
- values (1,'Opala','Vermelho', '12NB21');
- select * from veiculo;
+
+DROP TABLE IF EXISTS veiculo;
+CREATE TABLE IF NOT EXISTS veiculo (
+    IDVeiculo INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(30),
+    cor VARCHAR(15),
+    placa VARCHAR(8) UNIQUE
+);
+
+DROP TABLE IF EXISTS modelo;
+CREATE TABLE IF NOT EXISTS modelo (
+    IDModelo INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    dataF DATE
+);
+
+INSERT INTO venda (valor, data1) VALUES (250.50, '2005-04-12');
+SELECT * FROM venda;
+
+INSERT INTO veiculo (nome, cor, placa) VALUES ('Opala', 'Vermelho', 'ABC1234');
+SELECT * FROM veiculo;
+
+INSERT INTO modelo (dataF) VALUES ('2025-05-11');
+SELECT * FROM modelo;
+
+DROP TABLE IF EXISTS comprador;
+CREATE TABLE IF NOT EXISTS comprador (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(45),
+    telefone VARCHAR(15),
+    endereco VARCHAR(40)
+);
+INSERT INTO comprador (nome, telefone, endereco)
+VALUES ('Lobato', '99134448', 'rua12');
+SELECT * FROM comprador;
+
+DROP TABLE IF EXISTS marcas;
+CREATE TABLE IF NOT EXISTS marcas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50)
+);
+INSERT INTO marcas (nome) VALUES ('nomequalquer');
+SELECT * FROM marcas;
+
+---
+
+DROP DATABASE IF EXISTS ClubeDoLivro;
+CREATE DATABASE IF NOT EXISTS ClubeDoLivro;
+USE ClubeDoLivro;
+
+DROP TABLE IF EXISTS livro;
+CREATE TABLE IF NOT EXISTS livro (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50),
+    dataP DATE,
+    AreaL VARCHAR(50)
+);
+INSERT INTO livro (nome, dataP, AreaL) VALUES ('livro1', '2023-04-03', 'terror');
+SELECT * FROM livro;
+
+create table if not exists aluno (id int primary key auto_increment, nome varchar(50), telefone numeric (10) );
+INSERT INTO aluno (id,nome,telefone) values (1,'LObato' ,'99134448');
+select * from aluno;
+
+create table emprestimo (id int primary key auto_increment, dataDev date, dataEmp date,historico varchar(40));
+insert into emprestimo (id,dataDev,dataEmp,historico) values (1,'1489-05-03','1399-06-09','2 Emprestimos');
+select * from emprestimo;
