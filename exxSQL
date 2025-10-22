@@ -1,3 +1,7 @@
+
+
+-- #1 CONCESSIONARIA
+
 CREATE DATABASE IF NOT EXISTS concessionaria;
 USE concessionaria;
 
@@ -50,7 +54,7 @@ CREATE TABLE IF NOT EXISTS marcas (
 INSERT INTO marcas (nome) VALUES ('nomequalquer');
 SELECT * FROM marcas;
 
----
+-- 2#CLUBE D0 LIVRO
 
 DROP DATABASE IF EXISTS ClubeDoLivro;
 CREATE DATABASE IF NOT EXISTS ClubeDoLivro;
@@ -66,10 +70,99 @@ CREATE TABLE IF NOT EXISTS livro (
 INSERT INTO livro (nome, dataP, AreaL) VALUES ('livro1', '2023-04-03', 'terror');
 SELECT * FROM livro;
 
+
+DROP TABLE IF EXISTS aluno;
 create table if not exists aluno (id int primary key auto_increment, nome varchar(50), telefone numeric (10) );
 INSERT INTO aluno (id,nome,telefone) values (1,'LObato' ,'99134448');
 select * from aluno;
 
+
+DROP TABLE IF EXISTS emprestimo;
 create table emprestimo (id int primary key auto_increment, dataDev date, dataEmp date,historico varchar(40));
 insert into emprestimo (id,dataDev,dataEmp,historico) values (1,'1489-05-03','1399-06-09','2 Emprestimos');
 select * from emprestimo;
+
+-- #3 ESTABELECIMENTO COMERCIAL
+
+create database if not exists estabelecimento;
+use estabelecimento;
+
+
+DROP TABLE IF EXISTS registro;
+create table if not exists registro
+(id int primary key auto_increment, nome varchar (50),preço varchar(10), quantidade varchar(50));
+
+insert into registro (id,nome,preço,quantidade) values (9,'Lobato', '50','5');
+select * from registro;
+
+
+DROP TABLE IF EXISTS fornecedor;
+create table if not exists fornecedor (id int primary key auto_increment, nome varchar(50), telefone varchar(12));
+insert into fornecedor (id,nome,telefone) 
+values (6, 'Lobato', '9913-4448');
+select * from fornecedor;
+
+
+DROP TABLE IF EXISTS vendas;
+create table if not exists  vendas(idNota int primary KEY );
+insert into vendas (idNota) 
+values (5);
+select * from vendas;
+
+
+DROP TABLE IF EXISTS itens;
+create table if not exists itens(id int primary key auto_increment, nome varchar (50), preço numeric(10,2));
+insert into itens(id,nome,preço)
+values (3, 'Batata', '22.50');
+select * from itens;
+
+
+DROP TABLE IF EXISTS cliente;
+create table if not exists cliente(id int primary key auto_increment, nome varchar(50),telefone varchar(10));
+insert into cliente(id,nome,telefone) values (1,'Lobato','9913-4448');
+select * from cliente;
+
+-- #4 ARTIGOS CIENTIFICOS
+
+drop database if exists artigo_cientificos;
+create database if not exists artigos_cientificos;
+use artigos_cientificos;
+
+
+drop table if exists artigo;
+create table if not exists artigo (id int primary key auto_increment, nome varchar(50),resumo varchar (50), palavra_chave varchar(50),autor varchar(50), instituição varchar(50),periodo varchar(50));
+insert into artigo (id,nome,resumo,palavra_chave,autor,instituição,periodo) 
+values (2,'Livro1', 'Livro de terror', 'terror', 'lobato', 'Senac','2002');
+select * from artigo;
+
+create table if not exists palavra_chave (palavras varchar(50));
+insert into palavra_chave (palavras) 
+value ('terror,animação,ficticio');
+select * from palavra_chave;
+
+
+drop table if exists autores;
+create table if not exists autores (id int primary key, nome varchar(50), email varchar(30));
+insert into autores (id,nome,email) 
+values (1,'Lobato', 'lobato@gmail.com');
+select * from autores;
+
+
+drop table if exists instituição;
+create table instituição( id int primary key not null ,nome varchar (50),endereço varchar(50));
+insert into instituição (id,nome,endereço) 
+values(1,'Senac' , 'Gonçalves-chaves');
+select*from instituição;
+
+drop table if exists periodo;
+create table periodo (id int primary key not null, nome varchar(50), qualificação varchar(50));
+insert into periodo (id,nome,qualificação) 
+values (1,'segundo', 'Aprovado');
+select * from periodo;
+
+
+
+
+
+
+
