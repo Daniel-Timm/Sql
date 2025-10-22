@@ -160,6 +160,8 @@ insert into periodo (id,nome,qualificação)
 values (1,'segundo', 'Aprovado');
 select * from periodo;
 
+show databases;
+
 
 
 
