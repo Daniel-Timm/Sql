@@ -50,6 +50,18 @@ ID_SUBCATEGORIA_FK INT NOT NULL,
 FOREIGN KEY (ID_SUBCATEGORIA_FK) REFERENCES SUBCATEGORIA(ID_SUBCATEGORIA)
 );
 
+
+
+CREATE TABLE MATERIAS (
+    ID_MATERIA INT AUTO_INCREMENT PRIMARY KEY, -- Chave primária única
+    TITULO VARCHAR(255) NOT NULL,              -- Título da matéria
+    AUTOR VARCHAR(100) NOT NULL,               -- Nome do autor
+    CONTEUDO TEXT NOT NULL,                    -- Conteúdo completo da matéria
+    CATEGORIAS VARCHAR(255),                   -- Categorias selecionadas (ex: "tecnologia,cultura")
+    CAMINHO_IMAGEM VARCHAR(255),               -- Nome do arquivo da imagem salvo pelo Multer (ex: 1678888888888-foto.jpg)
+    DATA_PUBLICACAO DATETIME DEFAULT CURRENT_TIMESTAMP -- Data e hora em que foi salva
+);
+
 INSERT INTO INTERESSE (NOME_OPCAO, VALOR_FORMULARIO) VALUES
 ('Tecnologia', 'tecnologia'),
 ('Cultura', 'cultura'),
